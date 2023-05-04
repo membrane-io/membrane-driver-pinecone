@@ -1,0 +1,229 @@
+{
+  "schema": {
+    "types": [
+      {
+        "name": "Root",
+        "actions": [
+          {
+            "name": "configure",
+            "type": "Void",
+            "params": [
+              {
+                "name": "token",
+                "type": "String"
+              },
+              {
+                "name": "environment",
+                "type": "String"
+              }
+            ]
+          },
+          {
+            "name": "status",
+            "type": "Void"
+          }
+        ],
+        "fields": [
+          {
+            "name": "indexes",
+            "type": "IndexCollection"
+          }
+        ]
+      },
+      {
+        "name": "IndexCollection",
+        "fields": [
+          {
+            "name": "one",
+            "type": "Index",
+            "params": [
+              {
+                "name": "name",
+                "type": "String"
+              }
+            ]
+          },
+          {
+            "name": "items",
+            "type": "List",
+            "ofType": "Index"
+          }
+        ],
+        "actions": [
+          {
+            "name": "create",
+            "type": "Void",
+            "params": [
+              {
+                "name": "name",
+                "type": "String"
+              },
+              {
+                "name": "dimension",
+                "type": "Int"
+              },
+              {
+                "name": "metric",
+                "type": "String"
+              },
+              {
+                "name": "replicas",
+                "type": "Int"
+              },
+              {
+                "name": "pod_type",
+                "type": "String"
+              },
+              {
+                "name": "metadata_config",
+                "type": "String"
+              },
+              {
+                "name": "source_collection",
+                "type": "String"
+              },
+              {
+                "name": "pods",
+                "type": "Int"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "Index",
+        "fields": [
+          {
+            "name": "database",
+            "type": "Database"
+          },
+          {
+            "name": "status",
+            "type": "Status"
+          }
+        ],
+        "actions": [
+          {
+            "name": "query",
+            "type": "String",
+            "params": [
+              {
+                "name": "namespace",
+                "type": "String"
+              },
+              {
+                "name": "id",
+                "type": "String"
+              },
+              {
+                "name": "top_k",
+                "type": "Int"
+              },
+              {
+                "name": "includeValues",
+                "type": "Boolean"
+              },
+              {
+                "name": "includeMetadata",
+                "type": "Boolean"
+              },
+              {
+                "name": "vector",
+                "type": "String"
+              },
+              {
+                "name": "filter",
+                "type": "String"
+              },
+              {
+                "name": "sparceVector",
+                "type": "String"
+              }
+            ]
+          },
+          {
+            "name": "upsert",
+            "type": "Void",
+            "params": [
+              {
+                "name": "namespace",
+                "type": "String"
+              },
+              {
+                "name": "vectors",
+                "type": "String"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "Database",
+        "fields": [
+          {
+            "name": "name",
+            "type": "String"
+          },
+          {
+            "name": "metric",
+            "type": "String"
+          },
+          {
+            "name": "dimension",
+            "type": "Int"
+          },
+          {
+            "name": "replicas",
+            "type": "Int"
+          },
+          {
+            "name": "shards",
+            "type": "Int"
+          },
+          {
+            "name": "pods",
+            "type": "Int"
+          },
+          {
+            "name": "pod_type",
+            "type": "String"
+          }
+        ]
+      },
+      {
+        "name": "Status",
+        "fields": [
+          {
+            "name": "waiting",
+            "type": "List",
+            "ofType": "String"
+          },
+          {
+            "name": "crashed",
+            "type": "List",
+            "ofType": "String"
+          },
+          {
+            "name": "host",
+            "type": "String"
+          },
+          {
+            "name": "port",
+            "type": "Int"
+          },
+          {
+            "name": "state",
+            "type": "String"
+          },
+          {
+            "name": "ready",
+            "type": "Boolean"
+          }
+        ]
+      }
+    ]
+  },
+  "dependencies": {
+    "http": "http:"
+  }
+}
