@@ -17,16 +17,16 @@
                 "type": "String"
               }
             ]
-          },
-          {
-            "name": "status",
-            "type": "Void"
           }
         ],
         "fields": [
           {
             "name": "indexes",
             "type": "IndexCollection"
+          },
+          {
+            "name": "status",
+            "type": "String"
           }
         ]
       },
