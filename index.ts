@@ -15,11 +15,19 @@ export const Root = {
 
 export const IndexCollection = {
   one: async ({ args: { name } }) => {
-    const res = await api(`controller.${state.environment}.pinecone.io`, "GET", `databases/${name}`);
+    const res = await api(
+      `controller.${state.environment}.pinecone.io`,
+      "GET",
+      `databases/${name}`
+    );
     return res.json();
   },
   items: async () => {
-    const res = await api(`controller.${state.environment}.pinecone.io`, "GET", "databases");
+    const res = await api(
+      `controller.${state.environment}.pinecone.io`,
+      "GET",
+      "databases"
+    );
     const data = await res.json();
 
     const convertedArr = data.map((item) => {
@@ -28,38 +36,56 @@ export const IndexCollection = {
     return convertedArr;
   },
   create: async ({ args }) => {
-    await api(`controller.${state.environment}.pinecone.io`, "POST", "databases", null, JSON.stringify(args));
+    await api(
+      `controller.${state.environment}.pinecone.io`,
+      "POST",
+      "databases",
+      null,
+      JSON.stringify(args)
+    );
   },
 };
 
 export const Index = {
   gref: ({ obj }) => root.indexes.one({ name: obj.database.name }),
   query: async ({ self, args: { filter, vector, sparceVector, ...rest } }) => {
-    const host =  await self.status.host;
+    const host = await self.status.host;
     const parsedFilter = filter ? JSON.parse(filter) : null;
     const parsedVector = vector ? JSON.parse(vector) : null;
     const parsedSparceVector = sparceVector ? JSON.parse(sparceVector) : null;
-  
+
     const requestBody = {
       ...rest,
       filter: parsedFilter,
       vector: parsedVector,
       sparceVector: parsedSparceVector,
     };
-  
-    const res = await api(host, "POST", "query", null, JSON.stringify(requestBody));
+
+    const res = await api(
+      host,
+      "POST",
+      "query",
+      null,
+      JSON.stringify(requestBody)
+    );
     return JSON.stringify(await res.json());
   },
   upsert: async ({ self, args: { vectors, ...rest } }) => {
-    const host =  await self.status.host;
+    const host = await self.status.host;
     const parsedVectors = vectors ? JSON.parse(vectors) : null;
-  
+
     const requestBody = {
       ...rest,
       vectors: parsedVectors,
     };
-  
-    const res = await api(host, "POST", "vectors/upsert", null, JSON.stringify(requestBody));
+
+    const res = await api(
+      host,
+      "POST",
+      "vectors/upsert",
+      null,
+      JSON.stringify(requestBody)
+    );
     await res.json();
   },
 };
@@ -69,11 +95,20 @@ export async function configure({ args: { token, environment } }) {
   state.environment = environment;
 }
 
-async function api(endpoint: string, method: string, path: string, query?: any, body?: string) {
+async function api(
+  endpoint: string,
+  method: string,
+  path: string,
+  query?: any,
+  body?: string
+) {
   if (query) {
-    Object.keys(query).forEach((key) => (query[key] === undefined ? delete query[key] : {}));
+    Object.keys(query).forEach((key) =>
+      query[key] === undefined ? delete query[key] : {}
+    );
   }
-  const querystr = query && Object.keys(query).length ? `?${new URLSearchParams(query)}` : "";
+  const querystr =
+    query && Object.keys(query).length ? `?${new URLSearchParams(query)}` : "";
   const url = `https://${endpoint}/${path}${querystr}`;
   const req = {
     method,
