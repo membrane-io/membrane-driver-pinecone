@@ -109,35 +109,43 @@
             "params": [
               {
                 "name": "namespace",
-                "type": "String"
+                "type": "String",
+                "optional": true
               },
               {
                 "name": "id",
-                "type": "String"
+                "type": "String",
+                "optional": true
               },
               {
                 "name": "top_k",
-                "type": "Int"
+                "type": "Int",
+                "optional": true
               },
               {
                 "name": "includeValues",
-                "type": "Boolean"
+                "type": "Boolean",
+                "optional": true
               },
               {
                 "name": "includeMetadata",
-                "type": "Boolean"
+                "type": "Boolean",
+                "optional": true
               },
               {
                 "name": "vector",
-                "type": "String"
+                "type": "String",
+                "optional": true
               },
               {
                 "name": "filter",
-                "type": "String"
+                "type": "String",
+                "optional": true
               },
               {
                 "name": "sparceVector",
-                "type": "String"
+                "type": "String",
+                "optional": true
               }
             ]
           },
@@ -147,11 +155,13 @@
             "params": [
               {
                 "name": "namespace",
-                "type": "String"
+                "type": "String",
+                "optional": true
               },
               {
                 "name": "vectors",
-                "type": "String"
+                "type": "String",
+                "optional": true
               }
             ]
           }
