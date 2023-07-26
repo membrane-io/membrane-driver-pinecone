@@ -27,6 +27,10 @@
           {
             "name": "status",
             "type": "String"
+          },
+          {
+            "name": "tests",
+            "type": "Tests"
           }
         ]
       },
@@ -227,6 +231,15 @@
           },
           {
             "name": "ready",
+            "type": "Boolean"
+          }
+        ]
+      },
+      {
+        "name": "Tests",
+        "actions": [
+          {
+            "name": "testGetDatabases",
             "type": "Boolean"
           }
         ]

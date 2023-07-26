@@ -11,6 +11,14 @@ export const Root = {
     return `Ready`;
   },
   indexes: async () => ({}),
+  tests: () => ({}),
+};
+
+export const Tests = {
+  testGetDatabases: async () => {
+    const databases = await root.indexes.items().$query(`{ status { state } }`);
+    return Array.isArray(databases);
+  }
 };
 
 export const IndexCollection = {
