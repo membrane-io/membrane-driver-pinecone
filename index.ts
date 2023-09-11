@@ -18,11 +18,11 @@ export const Tests = {
   testGetDatabases: async () => {
     const databases = await root.indexes.items().$query(`{ status { state } }`);
     return Array.isArray(databases);
-  }
+  },
 };
 
 export const IndexCollection = {
-  one: async ({ args: { name } }) => {
+  one: async ({ name }) => {
     const res = await api(
       `controller.${state.environment}.pinecone.io`,
       "GET",
@@ -43,7 +43,7 @@ export const IndexCollection = {
     });
     return convertedArr;
   },
-  create: async ({ args }) => {
+  create: async (args) => {
     await api(
       `controller.${state.environment}.pinecone.io`,
       "POST",
@@ -55,8 +55,8 @@ export const IndexCollection = {
 };
 
 export const Index = {
-  gref: ({ obj }) => root.indexes.one({ name: obj.database.name }),
-  query: async ({ self, args: { filter, vector, sparceVector, ...rest } }) => {
+  gref: (_, { obj }) => root.indexes.one({ name: obj.database.name }),
+  query: async ({ filter, vector, sparceVector, ...rest }, { self }) => {
     const host = await self.status.host;
     const parsedFilter = filter ? JSON.parse(filter) : null;
     const parsedVector = vector ? JSON.parse(vector) : null;
@@ -78,7 +78,7 @@ export const Index = {
     );
     return JSON.stringify(await res.json());
   },
-  upsert: async ({ self, args: { vectors, ...rest } }) => {
+  upsert: async ({ vectors, ...rest }, { self }) => {
     const host = await self.status.host;
     const parsedVectors = vectors ? JSON.parse(vectors) : null;
 
@@ -98,7 +98,7 @@ export const Index = {
   },
 };
 
-export async function configure({ args: { token, environment } }) {
+export async function configure({ token, environment }) {
   state.token = token;
   state.environment = environment;
 }
