@@ -52,12 +52,14 @@
                 "name": "name",
                 "type": "String"
               }
-            ]
+            ],
+            "description": "Retrieves a single Pinecone index by name"
           },
           {
             "name": "items",
             "type": "List",
-            "ofType": "Index"
+            "ofType": "Index",
+            "description": "A list of Pinecone indices"
           }
         ],
         "actions": [
@@ -67,39 +69,49 @@
             "params": [
               {
                 "name": "name",
-                "type": "String"
+                "type": "String",
+                "description": "The name for the new Pinecone index"
               },
               {
                 "name": "dimension",
-                "type": "Int"
+                "type": "Int",
+                "description": "The dimension of vectors that the Pinecone index will store"
               },
               {
                 "name": "metric",
-                "type": "String"
+                "type": "String",
+                "description": "The metric type for the Pinecone index (e.g., 'cosine', 'euclidean')"
               },
               {
                 "name": "replicas",
-                "type": "Int"
+                "type": "Int",
+                "description": "The number of replicas for the Pinecone index"
               },
               {
                 "name": "pod_type",
-                "type": "String"
+                "type": "String",
+                "description": "The type of pod for the Pinecone index"
               },
               {
                 "name": "metadata_config",
-                "type": "String"
+                "type": "String",
+                "description": "The metadata configuration for the Pinecone index"
               },
               {
                 "name": "source_collection",
-                "type": "String"
+                "type": "String",
+                "description": "The source collection for the Pinecone index"
               },
               {
                 "name": "pods",
-                "type": "Int"
+                "type": "Int",
+                "description": "The number of pods to allocate for the Pinecone index"
               }
-            ]
+            ],
+            "description": "Creates a new Pinecone index with specified parameters"
           }
-        ]
+        ],
+        "description": "Collection of Pinecone indices"
       },
       {
         "name": "Index",
