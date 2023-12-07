@@ -106,11 +106,13 @@
         "fields": [
           {
             "name": "database",
-            "type": "Database"
+            "type": "Database",
+            "description": "Reference to the associated Pinecone Database."
           },
           {
             "name": "status",
-            "type": "Status"
+            "type": "Status",
+            "description": "Current status of the Index in the Pinecone database."
           }
         ],
         "actions": [
@@ -121,44 +123,53 @@
               {
                 "name": "namespace",
                 "type": "String",
-                "optional": true
+                "optional": true,
+                "description": "The namespace to which the query is scoped."
               },
               {
                 "name": "id",
                 "type": "String",
-                "optional": true
+                "optional": true,
+                "description": "Unique identifier for a specific entry within the namespace."
               },
               {
                 "name": "top_k",
                 "type": "Int",
-                "optional": true
+                "optional": true,
+                "description": "The number of top matching vectors to return."
               },
               {
                 "name": "includeValues",
                 "type": "Boolean",
-                "optional": true
+                "optional": true,
+                "description": "Specifies whether to include the values of the vectors in the response."
               },
               {
                 "name": "includeMetadata",
                 "type": "Boolean",
-                "optional": true
+                "optional": true,
+                "description": "Specifies whether to include metadata for the vectors in the response."
               },
               {
                 "name": "vector",
                 "type": "String",
-                "optional": true
+                "optional": true,
+                "description": "The vector to be used for the query."
               },
               {
                 "name": "filter",
                 "type": "String",
-                "optional": true
+                "optional": true,
+                "description": "The filter to apply to the query results."
               },
               {
                 "name": "sparceVector",
                 "type": "String",
-                "optional": true
+                "optional": true,
+                "description": "The sparse vector format used to represent vectors with a lot of zero values."
               }
-            ]
+            ],
+            "description": "Executes a query against a Pinecone Index and retrieves matching entries."
           },
           {
             "name": "upsert",
@@ -167,16 +178,20 @@
               {
                 "name": "namespace",
                 "type": "String",
-                "optional": true
+                "optional": true,
+                "description": "The namespace within the Index where vectors will be inserted or updated."
               },
               {
                 "name": "vectors",
                 "type": "String",
-                "optional": true
+                "optional": true,
+                "description": "A JSON string containing the vectors to insert or update."
               }
-            ]
+            ],
+            "description": "Inserts or updates vectors in the Pinecone Index."
           }
-        ]
+        ],
+        "description": "Represents an Index in Pinecone database."
       },
       {
         "name": "Database",
