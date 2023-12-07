@@ -10,29 +10,36 @@
             "params": [
               {
                 "name": "token",
-                "type": "String"
+                "type": "String",
+                "description": "Authentication token for accessing Pinecone services"
               },
               {
                 "name": "environment",
-                "type": "String"
+                "type": "String",
+                "description": "Specifies the environment to target within Pinecone services"
               }
-            ]
+            ],
+            "description": "Initializes the driver with the necessary configuration for Pinecone operations"
           }
         ],
         "fields": [
           {
             "name": "indexes",
-            "type": "IndexCollection"
+            "type": "IndexCollection",
+            "description": "Collection of Pinecone indexes available for operations"
           },
           {
             "name": "status",
-            "type": "String"
+            "type": "String",
+            "description": "Current status of the Pinecone driver"
           },
           {
             "name": "tests",
-            "type": "Tests"
+            "type": "Tests",
+            "description": "Collection of tests available for the Pinecone driver"
           }
-        ]
+        ],
+        "description": "Interface for interacting with Pinecone services"
       },
       {
         "name": "IndexCollection",
@@ -176,33 +183,41 @@
         "fields": [
           {
             "name": "name",
-            "type": "String"
+            "type": "String",
+            "description": "The name of the database."
           },
           {
             "name": "metric",
-            "type": "String"
+            "type": "String",
+            "description": "The metric type used by the database."
           },
           {
             "name": "dimension",
-            "type": "Int"
+            "type": "Int",
+            "description": "The number of dimensions for the database's indexing vector."
           },
           {
             "name": "replicas",
-            "type": "Int"
+            "type": "Int",
+            "description": "The number of replicas for each shard in the database."
           },
           {
             "name": "shards",
-            "type": "Int"
+            "type": "Int",
+            "description": "The total number of shards across all replicas in the database."
           },
           {
             "name": "pods",
-            "type": "Int"
+            "type": "Int",
+            "description": "The total number of pods allocated to the database."
           },
           {
             "name": "pod_type",
-            "type": "String"
+            "type": "String",
+            "description": "The type of pods used by the database."
           }
-        ]
+        ],
+        "description": "Represents a database configuration within the Pinecone service."
       },
       {
         "name": "Status",
@@ -240,9 +255,11 @@
         "actions": [
           {
             "name": "testGetDatabases",
-            "type": "Boolean"
+            "type": "Boolean",
+            "description": "Initiates a test to retrieve a list of databases."
           }
-        ]
+        ],
+        "description": "Handles the testing operations for the membrane-driver-pinecone program."
       }
     ]
   },
