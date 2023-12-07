@@ -50,14 +50,17 @@
             "params": [
               {
                 "name": "name",
-                "type": "String"
+                "type": "String",
+                "description": "The unique name of the pinecone index"
               }
-            ]
+            ],
+            "description": "Retrieves a single pinecone index by its name"
           },
           {
             "name": "items",
             "type": "List",
-            "ofType": "Index"
+            "ofType": "Index",
+            "description": "A list of all pinecone indexes"
           }
         ],
         "actions": [
@@ -67,39 +70,49 @@
             "params": [
               {
                 "name": "name",
-                "type": "String"
+                "type": "String",
+                "description": "Name for the new pinecone index"
               },
               {
                 "name": "dimension",
-                "type": "Int"
+                "type": "Int",
+                "description": "The number of dimensions of the pinecone index"
               },
               {
                 "name": "metric",
-                "type": "String"
+                "type": "String",
+                "description": "The metric type to measure distance in the pinecone index"
               },
               {
                 "name": "replicas",
-                "type": "Int"
+                "type": "Int",
+                "description": "The number of replicas for each pod in the pinecone index"
               },
               {
                 "name": "pod_type",
-                "type": "String"
+                "type": "String",
+                "description": "The type of pod to use for the pinecone index"
               },
               {
                 "name": "metadata_config",
-                "type": "String"
+                "type": "String",
+                "description": "Configuration for metadata in the pinecone index"
               },
               {
                 "name": "source_collection",
-                "type": "String"
+                "type": "String",
+                "description": "Optional source collection to import data from when creating the pinecone index"
               },
               {
                 "name": "pods",
-                "type": "Int"
+                "type": "Int",
+                "description": "Initial number of pods to allocate for the pinecone index"
               }
-            ]
+            ],
+            "description": "Creates a new pinecone index with customizable parameters"
           }
-        ]
+        ],
+        "description": "Collection of pinecone indexes"
       },
       {
         "name": "Index",
@@ -183,41 +196,33 @@
         "fields": [
           {
             "name": "name",
-            "type": "String",
-            "description": "The name assigned to the Pinecone database."
+            "type": "String"
           },
           {
             "name": "metric",
-            "type": "String",
-            "description": "The metric type used for vector search within the database."
+            "type": "String"
           },
           {
             "name": "dimension",
-            "type": "Int",
-            "description": "The number of dimensions for the vectors indexed in the database."
+            "type": "Int"
           },
           {
             "name": "replicas",
-            "type": "Int",
-            "description": "The number of replicas of the database for high availability."
+            "type": "Int"
           },
           {
             "name": "shards",
-            "type": "Int",
-            "description": "The number of shards to distribute the database index across."
+            "type": "Int"
           },
           {
             "name": "pods",
-            "type": "Int",
-            "description": "The number of pods allocated for the database in a Kubernetes environment."
+            "type": "Int"
           },
           {
             "name": "pod_type",
-            "type": "String",
-            "description": "The type of pods used by the Pinecone database service."
+            "type": "String"
           }
-        ],
-        "description": "Represents a Pinecone database configuration."
+        ]
       },
       {
         "name": "Status",
@@ -225,37 +230,30 @@
           {
             "name": "waiting",
             "type": "List",
-            "ofType": "String",
-            "description": "List of operations that are pending execution."
+            "ofType": "String"
           },
           {
             "name": "crashed",
             "type": "List",
-            "ofType": "String",
-            "description": "List of operations that have encountered errors and stopped unexpectedly."
+            "ofType": "String"
           },
           {
             "name": "host",
-            "type": "String",
-            "description": "The host address of the Pinecone service."
+            "type": "String"
           },
           {
             "name": "port",
-            "type": "Int",
-            "description": "The port number on which the Pinecone service is available."
+            "type": "Int"
           },
           {
             "name": "state",
-            "type": "String",
-            "description": "The current state of the Pinecone service, such as 'running' or 'stopped'."
+            "type": "String"
           },
           {
             "name": "ready",
-            "type": "Boolean",
-            "description": "Boolean flag indicating whether the Pinecone service is ready to process requests."
+            "type": "Boolean"
           }
-        ],
-        "description": "Represents the current status and operational information of the Pinecone service."
+        ]
       },
       {
         "name": "Tests",
