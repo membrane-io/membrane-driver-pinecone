@@ -183,33 +183,41 @@
         "fields": [
           {
             "name": "name",
-            "type": "String"
+            "type": "String",
+            "description": "The name assigned to the Pinecone database."
           },
           {
             "name": "metric",
-            "type": "String"
+            "type": "String",
+            "description": "The metric type used for vector search within the database."
           },
           {
             "name": "dimension",
-            "type": "Int"
+            "type": "Int",
+            "description": "The number of dimensions for the vectors indexed in the database."
           },
           {
             "name": "replicas",
-            "type": "Int"
+            "type": "Int",
+            "description": "The number of replicas of the database for high availability."
           },
           {
             "name": "shards",
-            "type": "Int"
+            "type": "Int",
+            "description": "The number of shards to distribute the database index across."
           },
           {
             "name": "pods",
-            "type": "Int"
+            "type": "Int",
+            "description": "The number of pods allocated for the database in a Kubernetes environment."
           },
           {
             "name": "pod_type",
-            "type": "String"
+            "type": "String",
+            "description": "The type of pods used by the Pinecone database service."
           }
-        ]
+        ],
+        "description": "Represents a Pinecone database configuration."
       },
       {
         "name": "Status",
@@ -217,30 +225,37 @@
           {
             "name": "waiting",
             "type": "List",
-            "ofType": "String"
+            "ofType": "String",
+            "description": "List of operations that are pending execution."
           },
           {
             "name": "crashed",
             "type": "List",
-            "ofType": "String"
+            "ofType": "String",
+            "description": "List of operations that have encountered errors and stopped unexpectedly."
           },
           {
             "name": "host",
-            "type": "String"
+            "type": "String",
+            "description": "The host address of the Pinecone service."
           },
           {
             "name": "port",
-            "type": "Int"
+            "type": "Int",
+            "description": "The port number on which the Pinecone service is available."
           },
           {
             "name": "state",
-            "type": "String"
+            "type": "String",
+            "description": "The current state of the Pinecone service, such as 'running' or 'stopped'."
           },
           {
             "name": "ready",
-            "type": "Boolean"
+            "type": "Boolean",
+            "description": "Boolean flag indicating whether the Pinecone service is ready to process requests."
           }
-        ]
+        ],
+        "description": "Represents the current status and operational information of the Pinecone service."
       },
       {
         "name": "Tests",
