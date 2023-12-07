@@ -10,29 +10,36 @@
             "params": [
               {
                 "name": "token",
-                "type": "String"
+                "type": "String",
+                "description": "API access token for authenticating with the Pinecone service."
               },
               {
                 "name": "environment",
-                "type": "String"
+                "type": "String",
+                "description": "The Pinecone environment to connect to ('default' if not specified)."
               }
-            ]
+            ],
+            "description": "Configures the Pinecone connection with a provided API token and optional environment setting."
           }
         ],
         "fields": [
           {
             "name": "indexes",
-            "type": "IndexCollection"
+            "type": "IndexCollection",
+            "description": "Collection of Pinecone index configurations."
           },
           {
             "name": "status",
-            "type": "String"
+            "type": "String",
+            "description": "The current status of the Pinecone service connection."
           },
           {
             "name": "tests",
-            "type": "Tests"
+            "type": "Tests",
+            "description": "A set of test utilities for the Pinecone indexes."
           }
-        ]
+        ],
+        "description": "Manages interactions with the Pinecone database service."
       },
       {
         "name": "IndexCollection",
